@@ -27,7 +27,7 @@ const geometry = new THREE.ConeGeometry(
 const material = new THREE.MeshLambertMaterial({color: 0x063e1d});
 
 function generateTree({levels}) {
-	function cloneScaleCone(cone) {
+	function getScaledCone(cone) {
 		const newCone = cone.clone();
 		newCone.scale.x += 0.2;
 		newCone.scale.y += 0.2;
@@ -40,7 +40,7 @@ function generateTree({levels}) {
 	let cone = new THREE.Mesh(geometry, material);
 
 	while(levels) {
-		cone = cloneScaleCone(cone); // clone previous cone, scale it
+		cone = getScaledCone(cone); // clone previous cone, scale it
 		pineTree.add(cone); // and add it to container
 		levels -= 1;
 	}
